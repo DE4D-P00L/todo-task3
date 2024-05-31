@@ -53,9 +53,13 @@ window.addEventListener("load", () => {
 
     task_edit_el.addEventListener("click", (e) => {
       if (task_input_el.getAttribute("readonly") == "readonly") {
+        task_edit_el.innerHTML =
+          '<i class="fa fa-floppy-o" aria-hidden="true"></i>';
         task_input_el.removeAttribute("readonly");
         task_input_el.focus();
       } else {
+        task_edit_el.innerHTML =
+          '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>';
         task_input_el.setAttribute("readonly", "readonly");
       }
     });
