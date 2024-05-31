@@ -7,6 +7,7 @@ window.addEventListener("load", () => {
     e.preventDefault();
 
     const task = input.value;
+    if (task.length < 1) return window.alert("Please enter a task");
 
     const task_el = document.createElement("div");
     task_el.classList.add("task");
@@ -29,11 +30,17 @@ window.addEventListener("load", () => {
 
     const task_edit_el = document.createElement("button");
     task_edit_el.classList.add("edit");
-    task_edit_el.innerText = "Edit";
+    const iconEdit = document.createElement("i");
+    iconEdit.classList.add("fa");
+    iconEdit.classList.add("fa-pencil-square-o");
+    task_edit_el.appendChild(iconEdit);
 
     const task_delete_el = document.createElement("button");
     task_delete_el.classList.add("delete");
-    task_delete_el.innerText = "Delete";
+    const icon = document.createElement("i");
+    icon.classList.add("fa");
+    icon.classList.add("fa-trash");
+    task_delete_el.appendChild(icon);
 
     task_actions_el.appendChild(task_edit_el);
     task_actions_el.appendChild(task_delete_el);
@@ -45,12 +52,10 @@ window.addEventListener("load", () => {
     input.value = "";
 
     task_edit_el.addEventListener("click", (e) => {
-      if (task_edit_el.innerText.toLowerCase() == "edit") {
-        task_edit_el.innerText = "Save";
+      if (task_input_el.getAttribute("readonly") == "readonly") {
         task_input_el.removeAttribute("readonly");
         task_input_el.focus();
       } else {
-        task_edit_el.innerText = "Edit";
         task_input_el.setAttribute("readonly", "readonly");
       }
     });
